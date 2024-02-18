@@ -1,0 +1,3 @@
+[submodule "recipes/pipeline/MARIO"]
+	path = recipes/pipeline/MARIO
+	url = https://github.com/Lindharden/MARIO.git
