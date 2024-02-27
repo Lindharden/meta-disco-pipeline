@@ -6,18 +6,16 @@ LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda
 DEPENDS += "libprotobuf-c libm libcsp libzmq libpt"
 
 SRCREV = "${AUTOREV}"
-SRC_URI = "git://github.com/Lindharden/MARIO.git;branch=external_config"
+SRC_URI = "git://github.com/Lindharden/MARIO.git;protocol=https;branch=main"
 
 S = "${WORKDIR}"
 
 inherit meson
 
-do_configure_prepend() {
+do_configure() {
     # Remove the previous build directory
     rm -rf ${S}/builddir
-}
 
-do_configure() {
     # Create a new build directory
     mkdir -p ${S}/builddir
     meson setup ${S} ${S}/builddir
