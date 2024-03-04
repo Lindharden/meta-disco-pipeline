@@ -3,11 +3,11 @@ SECTION = "pipeline"
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda2f7b4f302"
 
-SRC_URI = "git://github.com/Lindharden/MARIO.git;protocol=https;branch=main;rev=6e0a485a5b641b82a0a52eb7c77a643d2589314a"
+SRC_URI = "git://github.com/Lindharden/MARIO.git;protocol=https;branch=main;rev=d2879762bbcf9d52a0f4c124ed83af3d70edfe51"
 
 SRC_URI += " \
-    git://github.com/spaceinventor/libcsp.git;protocol=https;destsuffix=git/lib/csp;name=libcsp;branch=master;rev=f102726ff17ed60dcb73feb8c3fcd7c3f47cb034 \
-    git://github.com/spaceinventor/libparam.git;protocol=https;destsuffix=git/lib/param;name=libparam;branch=master;rev=50477e9677c920bf6db37f5894ed0a3a51be173a \
+    git://github.com/spaceinventor/libcsp.git;protocol=https;destsuffix=git/lib/csp;name=libcsp;branch=master;rev=544635f292b7a15ea46b95cd2861102129c329e7 \
+    git://github.com/spaceinventor/libparam.git;protocol=https;destsuffix=git/lib/param;name=libparam;branch=master;rev=fdf62e155a965df99a1012174677c6f2958a7e4f \
 "
 
 S = "${WORKDIR}/git"
