@@ -3,7 +3,7 @@ SECTION = "pipeline"
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda2f7b4f302"
 
-SRC_URI = "git://github.com/Lindharden/MARIO.git;protocol=https;branch=yocto;rev=9309a02eb3915938c8cadc28081280a52515cf07"
+SRC_URI = "git://github.com/Lindharden/MARIO.git;protocol=https;branch=yocto;rev=1c4515a86145478366ba045a10189f2066bf6471"
 
 SRC_URI += " \
     git://github.com/spaceinventor/libcsp.git;protocol=https;destsuffix=git/lib/csp;name=libcsp;branch=master;rev=544635f292b7a15ea46b95cd2861102129c329e7 \
