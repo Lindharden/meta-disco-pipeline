@@ -3,7 +3,7 @@ SECTION = "pipeline"
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda2f7b4f302"
 
-SRC_URI = "git://github.com/Lindharden/MARIO.git;protocol=https;branch=yocto-test;rev=7aca9e5e066072521391b86697927ac3f0c5ed28"
+SRC_URI = "git://github.com/Lindharden/MARIO.git;protocol=https;branch=yocto-test;rev=ef755fa4a94db47921bfa8cebe658f27ace8c945"
 
 SRC_URI += " \
     git://github.com/spaceinventor/libcsp.git;protocol=https;destsuffix=git/lib/csp;name=libcsp;branch=master;rev=544635f292b7a15ea46b95cd2861102129c329e7 \
@@ -52,7 +52,7 @@ do_install() {
     install -d ${D}/usr/share/pipeline
     install -m 0644 ${WORKDIR}/git/external_modules/mirror_aarch64.so ${D}/usr/share/pipeline
     install -m 0644 ${WORKDIR}/git/external_modules/gray_aarch64.so ${D}/usr/share/pipeline
-    install -m 0644 ${WORKDIR}/git/sim/test.png ${D}/usr/share/pipeline
+    install -m 0644 ${WORKDIR}/git/test.png ${D}/usr/share/pipeline
 }
 
 FILES:${PN} += "${libdir}/*"
