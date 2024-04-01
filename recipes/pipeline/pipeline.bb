@@ -3,7 +3,7 @@ SECTION = "pipeline"
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda2f7b4f302"
 
-SRC_URI = "git://github.com/Lindharden/MARIO.git;protocol=https;branch=yocto;rev=1c4515a86145478366ba045a10189f2066bf6471"
+SRC_URI = "git://github.com/Lindharden/MARIO.git;protocol=https;branch=yocto;rev=b7e3d11398cc4092413b49ff6b72f78d114aff12"
 
 SRC_URI += " \
     git://github.com/spaceinventor/libcsp.git;protocol=https;destsuffix=git/lib/csp;name=libcsp;branch=master;rev=544635f292b7a15ea46b95cd2861102129c329e7 \
@@ -50,9 +50,8 @@ do_configure() {
 do_install() {
     ninja -C ${B} install
     install -d ${D}/usr/share/pipeline
-    install -m 0644 ${WORKDIR}/git/external_modules/mirror_aarch64.so ${D}/usr/share/pipeline
-    install -m 0644 ${WORKDIR}/git/external_modules/gray_aarch64.so ${D}/usr/share/pipeline
-    install -m 0644 ${WORKDIR}/git/external_modules/demosaic_aarch64.so ${D}/usr/share/pipeline
+    install -m 0644 ${WORKDIR}/git/external_modules/flip.so ${D}/usr/share/pipeline
+    install -m 0644 ${WORKDIR}/git/external_modules/gray.so ${D}/usr/share/pipeline
 }
 
 FILES:${PN} += "${libdir}/*"
