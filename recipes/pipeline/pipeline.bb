@@ -50,9 +50,8 @@ do_configure() {
 do_install() {
     ninja -C ${B} install
     install -d ${D}/usr/share/pipeline
-    install -m 0644 ${WORKDIR}/git/external_modules/mirror_aarch64.so ${D}/usr/share/pipeline
-    install -m 0644 ${WORKDIR}/git/external_modules/gray_aarch64.so ${D}/usr/share/pipeline
-    install -m 0644 ${WORKDIR}/git/external_modules/demosaic_aarch64.so ${D}/usr/share/pipeline
+    install -m 0644 ${WORKDIR}/git/external_modules/flip.so ${D}/usr/share/pipeline
+    install -m 0644 ${WORKDIR}/git/external_modules/gray.so ${D}/usr/share/pipeline
 }
 
 FILES:${PN} += "${libdir}/*"
