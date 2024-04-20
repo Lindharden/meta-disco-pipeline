@@ -3,16 +3,16 @@ SECTION = "pipeline"
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda2f7b4f302"
 
-SRC_URI = "git://github.com/Lindharden/MARIO.git;protocol=https;branch=yocto;rev=0fa7ef36f09eb8bcd44f046e4a30219c141aefb7"
+SRC_URI = "git://github.com/Lindharden/MARIO.git;protocol=https;branch=yocto-performance;rev=11989c1ae837196b70d20ca1fa2b5fa0b570461c"
 
 SRC_URI += " \
-    git://github.com/spaceinventor/libcsp.git;protocol=https;destsuffix=git/lib/csp;name=libcsp;branch=master;rev=544635f292b7a15ea46b95cd2861102129c329e7 \
-    git://github.com/spaceinventor/libparam.git;protocol=https;destsuffix=git/lib/param;name=libparam;branch=master;rev=fdf62e155a965df99a1012174677c6f2958a7e4f \
+    git://github.com/spaceinventor/libcsp.git;protocol=https;destsuffix=git/lib/csp;name=libcsp;branch=master;rev=6d0c670ac1c31b43083ab157cd2ed66a2ae8df35 \
+    git://github.com/spaceinventor/libparam.git;protocol=https;destsuffix=git/lib/param;name=libparam;branch=master;rev=6dc7d671bf6c9d6f35bd86022a2fc123da4419e8 \
 "
 
 S = "${WORKDIR}/git"
 
-DEPENDS = "curl openssl libsocketcan can-utils zeromq libyaml meson-native ninja-native pkgconfig python3-pip-native elfutils libbsd protobuf-c"
+DEPENDS = "curl openssl libsocketcan can-utils zeromq libyaml meson-native ninja-native pkgconfig python3-pip-native elfutils libbsd protobuf-c perf time"
 RDEPENDS:${PN} += "libcsp"
 
 inherit meson pkgconfig
@@ -50,9 +50,9 @@ do_configure() {
 do_install() {
     ninja -C ${B} install
     install -d ${D}/usr/share/pipeline
-    install -m 0644 ${WORKDIR}/git/external_modules/flip.so ${D}/usr/share/pipeline
-    install -m 0644 ${WORKDIR}/git/external_modules/gray.so ${D}/usr/share/pipeline
-    install -m 0644 ${WORKDIR}/git/external_modules/plusone-raw.so ${D}/usr/share/pipeline    
+    install -m 0644 ${WORKDIR}/git/external_modules/id.so ${D}/usr/share/pipeline
+    install -m 0644 ${WORKDIR}/git/storage.vmem ${D}/usr/share/pipeline    
+    install -m 0644 ${WORKDIR}/git/performance ${D}/usr/share/pipeline
 }
 
 FILES:${PN} += "${libdir}/*"
