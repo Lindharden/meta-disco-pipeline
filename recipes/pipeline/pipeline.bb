@@ -12,8 +12,8 @@ SRC_URI += " \
 
 S = "${WORKDIR}/git"
 
-DEPENDS = "curl openssl libsocketcan can-utils zeromq libyaml meson-native ninja-native pkgconfig python3-pip-native elfutils libbsd protobuf-c"
-RDEPENDS:${PN} += "libcsp"
+DEPENDS = "curl openssl libsocketcan can-utils zeromq libyaml meson-native ninja-native pkgconfig python3-pip-native elfutils libbsd protobuf-c libjxl opencv"
+RDEPENDS:${PN} += "libcsp opencv libjxl"
 
 inherit meson pkgconfig
 
