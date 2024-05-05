@@ -3,7 +3,7 @@ SECTION = "pipeline"
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda2f7b4f302"
 
-SRC_URI = "git://github.com/Lindharden/MARIO.git;protocol=https;branch=yocto-performance;rev=aa413d003d322f595befe30cf751ceaa9ea0e4e6"
+SRC_URI = "git://github.com/Lindharden/MARIO.git;protocol=https;branch=yocto-performance;rev=cab2049a19b649f9a09e81114a722ac49a38579e"
 
 SRC_URI += " \
     git://github.com/spaceinventor/libcsp.git;protocol=https;destsuffix=git/lib/csp;name=libcsp;branch=master;rev=6d0c670ac1c31b43083ab157cd2ed66a2ae8df35  \
@@ -51,7 +51,6 @@ do_install() {
     ninja -C ${B} install
     install -d ${D}/usr/share/pipeline
     install -m 0644 ${WORKDIR}/git/external_modules/id.so ${D}/usr/share/pipeline
-    # install -m 0644 ${WORKDIR}/git/external_modules/mem.so ${D}/usr/share/pipeline
     install -m 0644 ${WORKDIR}/git/storage.vmem ${D}/usr/share/pipeline    
     install -m 0644 ${WORKDIR}/git/performance ${D}/usr/share/pipeline
 }
