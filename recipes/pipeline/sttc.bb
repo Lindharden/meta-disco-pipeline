@@ -3,11 +3,11 @@ SECTION = "pipeline"
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda2f7b4f302"
 
-SRC_URI = "git://github.com/nikso-itu/disco-radio-mimic.git;protocol=https;branch=buffer;rev=a47f695aac8da67c210f3ecacd80ce6de105ec76"
+SRC_URI = "git://github.com/nikso-itu/disco-radio-mimic.git;protocol=https;branch=buffer;rev=b8c4070691981fbedf4f3e25c7196e66e8766998"
 
 SRC_URI += " \
     git://github.com/spaceinventor/libcsp.git;protocol=https;destsuffix=git/lib/csp;name=libcsp;branch=master;rev=6d0c670ac1c31b43083ab157cd2ed66a2ae8df35 \
-    git://github.com/spaceinventor/libparam.git;protocol=https;destsuffix=git/lib/param;name=libparam;branch=master;rev=137a315e250d0b2b5f99286a942f790db946c158 \
+    git://github.com/Lindharden/libparam.git;protocol=https;destsuffix=git/lib/param;name=libparam;branch=master;rev=398b98219048690078aa92fae49f06d1f2a37d40 \
 "
 
 S = "${WORKDIR}/git"

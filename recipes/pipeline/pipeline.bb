@@ -3,11 +3,11 @@ SECTION = "pipeline"
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda2f7b4f302"
 
-SRC_URI = "git://github.com/Lindharden/MARIO.git;protocol=https;branch=yocto-performance;rev=3870c4f51b583c2a6cbf5953be161715b5fe35b7"
+SRC_URI = "git://github.com/Lindharden/DIPP.git;protocol=https;branch=e2e-test-yocto;rev=02a84132cfa4fc5750a53a1ae758cb7d24e7ce6e"
 
 SRC_URI += " \
     git://github.com/spaceinventor/libcsp.git;protocol=https;destsuffix=git/lib/csp;name=libcsp;branch=master;rev=6d0c670ac1c31b43083ab157cd2ed66a2ae8df35  \
-    file://libparam/ \
+    git://github.com/spaceinventor/libparam.git;protocol=https;destsuffix=git/lib/param;name=libparam;branch=master;rev=6dc7d671bf6c9d6f35bd86022a2fc123da4419e8 \
 "
 
 S = "${WORKDIR}/git"
@@ -43,9 +43,6 @@ do_configure() {
 
     export CFLAGS="${TARGET_CC_ARCH} -fstack-protector-strong -O2 -D_FORTIFY_SOURCE=2 -Wformat -Wformat-security -Werror=format-security --sysroot=${STAGING_DIR_TARGET} -I${WORKDIR}/git/include"
     export CXXFLAGS="${CFLAGS}"
-
-    rm -fr ${S}/lib/param
-    cp -rf ${WORKDIR}/libparam ${S}/lib/param
 
     meson setup ${S} ${B} --cross-file ${WORKDIR}/cross.txt -Dprefix=${D}${prefix}
 }
