@@ -1,19 +1,19 @@
-SUMMARY = "DISCO 2 Image processing pipeline"
+SUMMARY = "DISCO 2 STTC mimic"
 SECTION = "pipeline"
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda2f7b4f302"
 
-SRC_URI = "git://github.com/Lindharden/MARIO.git;protocol=https;branch=yocto-performance;rev=3870c4f51b583c2a6cbf5953be161715b5fe35b7"
+SRC_URI = "git://github.com/nikso-itu/disco-radio-mimic.git;protocol=https;branch=buffer;rev=a47f695aac8da67c210f3ecacd80ce6de105ec76"
 
 SRC_URI += " \
-    git://github.com/spaceinventor/libcsp.git;protocol=https;destsuffix=git/lib/csp;name=libcsp;branch=master;rev=6d0c670ac1c31b43083ab157cd2ed66a2ae8df35  \
-    file://libparam/ \
+    git://github.com/spaceinventor/libcsp.git;protocol=https;destsuffix=git/lib/csp;name=libcsp;branch=master;rev=6d0c670ac1c31b43083ab157cd2ed66a2ae8df35 \
+    git://github.com/spaceinventor/libparam.git;protocol=https;destsuffix=git/lib/param;name=libparam;branch=master;rev=137a315e250d0b2b5f99286a942f790db946c158 \
 "
 
 S = "${WORKDIR}/git"
 
-DEPENDS = "curl openssl libsocketcan can-utils zeromq libyaml meson-native ninja-native pkgconfig python3-pip-native elfutils libbsd protobuf-c perf time coreutils libjxl opencv"
-RDEPENDS:${PN} += "libcsp libjxl opencv"
+DEPENDS = "curl openssl libsocketcan can-utils zeromq libyaml meson-native ninja-native pkgconfig python3-pip-native elfutils libbsd"
+RDEPENDS:${PN} += "libcsp"
 
 inherit meson pkgconfig
 
@@ -44,20 +44,12 @@ do_configure() {
     export CFLAGS="${TARGET_CC_ARCH} -fstack-protector-strong -O2 -D_FORTIFY_SOURCE=2 -Wformat -Wformat-security -Werror=format-security --sysroot=${STAGING_DIR_TARGET} -I${WORKDIR}/git/include"
     export CXXFLAGS="${CFLAGS}"
 
-    rm -fr ${S}/lib/param
-    cp -rf ${WORKDIR}/libparam ${S}/lib/param
-
     meson setup ${S} ${B} --cross-file ${WORKDIR}/cross.txt -Dprefix=${D}${prefix}
 }
 
 do_install() {
     ninja -C ${B} install
-    install -d ${D}/usr/share/pipeline
-    # install -m 0644 ${WORKDIR}/git/external_modules/id.so ${D}/usr/share/pipeline
-    # install -m 0644 ${WORKDIR}/git/storage.vmem ${D}/usr/share/pipeline    
-    # install -m 0644 ${WORKDIR}/git/performance ${D}/usr/share/pipeline
 }
 
 FILES:${PN} += "${libdir}/*"
 FILES:${PN} += "/usr/csp /usr/csp/csp_autoconfig.h"
-FILES_${PN} += "/usr/share/pipeline"
