@@ -3,7 +3,7 @@ SECTION = "pipeline"
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda2f7b4f302"
 
-SRC_URI = "git://github.com/Lindharden/DIPP.git;protocol=https;branch=e2e-test-yocto;rev=aabdbe22ec266c4e1fbdfa5501b4f5aafae0d83b"
+SRC_URI = "git://github.com/Lindharden/DIPP.git;protocol=https;branch=robustness;rev=4425eae66991b05279060b9b4cc58968e309ba76"
 
 SRC_URI += " \
     git://github.com/spaceinventor/libcsp.git;protocol=https;destsuffix=git/lib/csp;name=libcsp;branch=master;rev=6d0c670ac1c31b43083ab157cd2ed66a2ae8df35  \
@@ -50,8 +50,7 @@ do_configure() {
 do_install() {
     ninja -C ${B} install
     install -d ${D}/usr/share/pipeline
-    install -m 0644 ${WORKDIR}/git/external_modules/encoder.so ${D}/usr/share/pipeline    
-    install -m 0644 ${WORKDIR}/git/external_modules/demosaic.so ${D}/usr/share/pipeline  
+    install -m 0644 ${WORKDIR}/git/external_modules/crash.so ${D}/usr/share/pipeline
 }
 
 FILES:${PN} += "${libdir}/*"
